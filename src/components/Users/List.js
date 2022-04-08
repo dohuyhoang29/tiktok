@@ -6,13 +6,14 @@ class UserList extends React.Component {
     constructor(props) {
         super(props);
 
+        const LIST_USERS = JSON.parse(localStorage.getItem("users"));
+
         this.state = {
-            users: []
+            users: LIST_USERS ? LIST_USERS : []
         }
     }
 
     componentDidMount() {
-        this.setState({ users: [{ id: 1, name: "tran van test", email: 'test@gmail.com' }] });
     }
 
     componentDidUpdate(preProps, preStates) {
@@ -47,11 +48,11 @@ class UserList extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.users.map((item) => {
+                        {this.state.users.map((item, idx) => {
                             return (
-                                <tr key={item.id}>
+                                <tr key={idx}>
                                     <td>{item.id}</td>
-                                    <td>{item.name}</td>
+                                    <td>{item.fullName}</td>
                                     <td>{item.email}</td>
                                     <td>
                                         <Link to="/user/edit">

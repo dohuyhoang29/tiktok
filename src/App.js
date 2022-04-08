@@ -8,10 +8,10 @@ import Edit from "./components/Users/Edit";
 function App() {
 
   return (
-    <div className="row">
-      <div className="col-2">
+    <div className="wrapper row">
+      <nav id="sidebar" className="col-2">
         <SideBar />
-      </div>
+      </nav>
       <div className="col-10">
         <Routes>
           <Route path="/" element={<Home />} />
